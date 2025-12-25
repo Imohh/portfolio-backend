@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db';
 import postRoutes from './routes/postRoutes';
+import adminRoutes from "./routes/admin.routes";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Routes
 app.use('/post', postRoutes);
+app.use(adminRoutes);
 
 app.get('/', (_req, res) => {
   res.json({ message: 'Portfolio Blog API is running' });
